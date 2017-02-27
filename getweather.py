@@ -18,24 +18,23 @@ import json
 
 
 class WeatherClient(object):
-	'''get the weather iformation in WeatherUnderground's API 
-	(http://www.wunderground.com/weather/api)'''
+    '''get the weather iformation in WeatherUnderground's API 
+    (http://www.wunderground.com/weather/api)'''
 
-	url_base = 'http://api.wunderground.com/api'
-	url_services= {
-		"hourly":"/hourly/q/CA/"
-	}
+    url_base = 'http://api.wunderground.com/api/'
+    url_services= {
+        "hourly":"/hourly/q/CA/"
+    }
 
-	def __init__(self, apikey):
-		self.apikey = apikey
+    def __init__(self, apikey):
+        self.apikey = apikey
 
 
-	def hourly(self, location)
-		answer_format = "json"
-        url = WeatherClient.url_base + api_key + \
+    def hourly(self, location):
+        answer_format = "json"
+        url = WeatherClient.url_base + self.apikey + \
             WeatherClient.url_services["hourly"] + location + "." + answer_format
 
         r = requests.get(url)
-
         jsondata = json.loads(r.text)
-        return jsondata["almanac"]
+        return jsondata["hourly_forecast"]
