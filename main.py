@@ -11,6 +11,7 @@ Using json
 alba.v.lamas@gmail.com
 '''
 from getweather import WeatherClient
+from recommendation import Recommendation
 import sys
 
 api_key = None #sys.argv[1]
@@ -21,10 +22,10 @@ def print_forecast(json_info, location):
     prints de temperature and the precipitations
     '''
     print "WEATHER FORECAT (" + location + ")"
-    print "TEMPERATURE:" + json_info["temp"]["metric"]
+    print "TEMPERATURE:" + json_info["temp"]["metric"] + " C"
     print "PRECIPITATION'S PROBABILITY: " + json_info["pop"] +"%"
     print "CONDITION: " + json_info["condition"]
-    print "RECOMENDATION"
+    print "RECOMENDATION: " + Recommendation().recommend(json_info["condition"])
 
 if __name__ == "__main__":
 
