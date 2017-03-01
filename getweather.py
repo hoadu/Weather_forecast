@@ -32,9 +32,17 @@ class WeatherClient(object):
 
     def hourly(self, location):
         answer_format = "json"
-        url = WeatherClient.url_base + self.apikey + \
-            WeatherClient.url_services["hourly"] + location + "." + answer_format
-
+        try:
+            url = WeatherClient.url_base + self.apikey + \
+                WeatherClient.url_services["hourly"] + location + "." + answer_format
+        except TypeError:
+            print "API KEY is not valid"
+            exit(-1)
         r = requests.get(url)
         jsondata = json.loads(r.text)
-        return jsondata["hourly_forecast"]
+        try:
+            return jsondata["hourly_forecast"]
+        except KeyError:
+            print "API KEY is not valid"
+            exit(-1)
+        
