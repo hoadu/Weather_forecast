@@ -25,7 +25,7 @@ def print_forecast(json_info, location):
     print "TEMPERATURE:" + json_info["temp"]["metric"] + " C"
     print "PRECIPITATION'S PROBABILITY: " + json_info["pop"] +"%"
     print "CONDITION: " + json_info["condition"]
-    print "RECOMENDATION: " + Recommendation().recommend(json_info["condition"])
+    print "RECOMENDATION: " + Recommendation().recommend(json_info["condition"], json_info["temp"]["metric"])
 
 if __name__ == "__main__":
 
