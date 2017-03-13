@@ -14,7 +14,7 @@ from getweather import WeatherClient
 from recommendation import Recommendation
 import sys
 
-api_key = None #sys.argv[1]
+api_key = None
 
 
 def print_forecast(json_info, location):
@@ -25,15 +25,15 @@ def print_forecast(json_info, location):
     print "TEMPERATURE:" + json_info["temp"]["metric"] + " C"
     print "PRECIPITATION'S PROBABILITY: " + json_info["pop"] +"%"
     print "CONDITION: " + json_info["condition"]
-    print "RECOMENDATION: " + Recommendation().recommend(json_info["condition"])
+    print "RECOMENDATION: " + Recommendation().recommend(json_info["condition"], json_info["temp"]["metric"])
 
 if __name__ == "__main__":
 
-    if not api_key:
-        try:
-            api_key = sys.argv[1]
-        except IndexError:
-            print "Must provide api key in code or cmdline arg"
+    if len(sys.argv)<2:
+		print "Must provide api key in code or cmdline arg"
+		sys.exit(-1)
+    else:
+        api_key = sys.argv[1]
 
     wc = WeatherClient(api_key)
     location = "Lleida"
