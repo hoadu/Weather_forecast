@@ -21,7 +21,7 @@ def print_forecast(json_info, location):
     '''
     prints de temperature and the precipitations
     '''
-    print "WEATHER FORECAT (" + location + ")"
+    print "WEATHER FORECAST (" + location + ")"
     print "TEMPERATURE:" + json_info["temp"]["metric"] + " C"
     print "PRECIPITATION'S PROBABILITY: " + json_info["pop"] +"%"
     print "CONDITION: " + json_info["condition"]
