@@ -2,7 +2,7 @@
 
 HOW TO USE:
 
-	<python main.py>
+	<python main.py> <API KEI for Weather Underground>
 
 NECESSARY THINGS:
 	
